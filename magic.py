@@ -90,8 +90,6 @@ if args.type != 'lib':
 
 
 def on_press(key):
-    print('alphanumeric key {0} pressed'.format(
-        key))
     if key == keyboard.Key.shift:
         global origin_pos
         global sw
@@ -118,4 +116,6 @@ listener.start()
 my_eyetracker.subscribe_to(tr.EYETRACKER_GAZE_DATA, gaze_data_callback, as_dictionary=True)
 
 while True:
+    if m.position[1] < 70:
+        m.position = (m.position[0], 70)
     time.sleep(0.001)
